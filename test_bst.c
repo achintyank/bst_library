@@ -13,7 +13,6 @@ int main(void) {
     bst_node* node1 = malloc(sizeof(bst_node));
     bst_node* node2 = malloc(sizeof(bst_node));
 
-    head = bst_init(&head);
-
-    bst_add(&head, node1);
+    bst_init(&head);
+    bst_add(&head, node1,NULL);
 }

@@ -2,42 +2,25 @@
 #include "bst.h"
 #include <stdbool.h>
 
-bst_node* bst_init(bst_node** head) {
-    head = NULL;
+void bst_init(bst_node** head) {
+    *head = NULL;
 }
 
-void bst_add(bst_node** head, bst_node* ptr) {
-    if (head == NULL) {
-
-        head = &ptr;
+void bst_add(bst_node** current_node, bst_node* ptr, bst_node* parent_node) {
+    if (*current_node == NULL) {
+        *current_node = ptr;
+        ptr->parent=parent_node;
     }
     else {
-
-        bst_node* current = *head;
-
-        do {
-            bool greater = bst_check(current, ptr);
-
-            if (greater) {
-                current = current->rchild;
-            }
-            else {
-                current = current->lchild;
-            } // trying to implement adding a node by sorting it based on its value 
-              // bstcheck()
-
-        } while (current->rchild != NULL && current->lchild != NULL);
+        if (ptr->data < (*current_node)->data) {
+            bst_add(&(*current_node)->lchild, ptr, *current_node);
+        }
+        else {
+            bst_add(&(*current_node)->rchild, ptr, *current_node);
+        }
     }
 }
 
 bool bst_check(bst_node* check_node, bst_node* current_node) {
-    int check_data = check_node->data;
-    int current_data = current_node->data;
-
-    if (current_data > check_data) {
-        return true;
-    } 
-    else {
-        return false;
-    }
+    return 0;
 }

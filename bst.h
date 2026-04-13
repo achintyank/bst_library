@@ -9,7 +9,7 @@ typedef struct bst_node_struct {
     struct bst_node_struct* parent;
 } bst_node;
 
-bst_node* bst_init(bst_node** head);
-void bst_add(bst_node** head, bst_node* ptr);
+void bst_init(bst_node** head);
+void bst_add(bst_node** head, bst_node* ptr, bst_node* parent_node);
 
 bool bst_check(bst_node* check_node, bst_node* current_node);
